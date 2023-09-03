@@ -19,7 +19,7 @@ setuptools==68.0.0
 tensorflow==2.13.0
 tflite_runtime==2.13.0
 thop==0.1.1.post2209072238
-torch==2.0.1+cu117
-torchvision==0.15.2+cu117
+torch
+torchvision
 tqdm==4.66.1
 train==0.0.5

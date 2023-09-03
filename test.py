@@ -86,11 +86,18 @@ file=sl.file_uploader("Video",type=['mov', 'avi', 'mp4', 'mpg', 'mpeg', 'm4v', '
 if file==None:
     sl.write("Please upload a video.")
     sl.session_state.clicked=False
+    sl.session_state.frame_list=None
+    sl.session_state.df=None
+    sl.session_state.label=None
+    
 else:
     # sl.write(file.name)
 
     if file!=sl.session_state.file or file.name!=sl.session_state.file.name:
         sl.session_state.clicked=False
+        sl.session_state.frame_list=None
+        sl.session_state.df=None
+        sl.session_state.label=None
     sl.session_state.file=file
     tfile=tempfile.NamedTemporaryFile(delete=False)
     tfile.write(file.read())

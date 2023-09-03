@@ -152,7 +152,7 @@ else:
         sl.write("Head detection done.")
         sl.divider()
 
-        df['id']=df['id'].map(int)
+        df['id']=df['id'].map(int).map(str)
         sl.session_state.df=df
         label=df
         sl.session_state.label=label
@@ -184,7 +184,7 @@ else:
                         (0,255,0),2)
                 if cur==data.loc[num]['id']:
                     cv2.putText(img,
-                    'id:%d'%cur,
+                    'id:%s'%cur,
                     (xm,yM+35),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     1.5,(0,255,0),3)
@@ -193,12 +193,12 @@ else:
                     (0,50),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     1.5,(0,0,255),3)
-            sl.write("Is the headbox with id:%d the kid,the teacher or neither?"%cur)
+            sl.write("Is the headbox with id:%s the kid,the teacher or neither?"%cur)
             sl.image(img,channels="BGR")
             col1,col2,col3=sl.columns(3)
-            kid=col1.button("Kid",key="kid%d"%cur,on_click=click,args=['kid',data,cur])
-            tea=col2.button("Teacher",key="tea%d"%cur,on_click=click,args=['tea',data,cur])
-            nei=col3.button("Neither",key="nei%d"%cur,on_click=click,args=['nei',data,cur])
+            kid=col1.button("Kid",key="kid%s"%cur,on_click=click,args=['kid',data,cur])
+            tea=col2.button("Teacher",key="tea%s"%cur,on_click=click,args=['tea',data,cur])
+            nei=col3.button("Neither",key="nei%s"%cur,on_click=click,args=['nei',data,cur])
             # quit=col4.button("Quit",key="quit%d"%cur,on_click=click,args=['quit',data,cur])
         else:
             sl.write("Labelling done.")
@@ -249,7 +249,7 @@ else:
                         (0,255,0),2)
                 if cur==data.loc[num]['id']:
                     cv2.putText(img,
-                    'id:%d'%cur,
+                    'id:%s'%cur,
                     (xm,yM+35),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     1.5,(0,255,0),3)
@@ -258,12 +258,12 @@ else:
                     (0,50),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     1.5,(0,0,255),3)
-            sl.write("Is the headbox with id:%d the kid,the teacher or neither?"%cur)
+            sl.write("Is the headbox with id:%s the kid,the teacher or neither?"%cur)
             sl.image(img,channels="BGR")
             col1,col2,col3=sl.columns(3)
-            kid=col1.button("Kid",key="kid%d"%cur,on_click=click,args=['kid',data,cur])
-            tea=col2.button("Teacher",key="tea%d"%cur,on_click=click,args=['tea',data,cur])
-            nei=col3.button("Neither",key="nei%d"%cur,on_click=click,args=['nei',data,cur])
+            kid=col1.button("Kid",key="kid%s"%cur,on_click=click,args=['kid',data,cur])
+            tea=col2.button("Teacher",key="tea%s"%cur,on_click=click,args=['tea',data,cur])
+            nei=col3.button("Neither",key="nei%s"%cur,on_click=click,args=['nei',data,cur])
             # quit=col4.button("Quit",key="quit%d"%cur,on_click=click,args=['quit',data,cur])
         else:
             sl.write("Labelling done.")

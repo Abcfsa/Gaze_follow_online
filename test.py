@@ -51,7 +51,8 @@ def head_detect(_tracker,f_num,df,img0,_model,_device,
     img = img.transpose((2, 0, 1))[::-1]  # HWC to CHW, BGR to RGB
     img = np.ascontiguousarray(img)
     shape_mat=np.array([img0.shape[1],img0.shape[0],img0.shape[1],img0.shape[0]])
-    img = torch.from_numpy(img).to(_device)
+
+    img = torch.from_numpy(img)
     img = img.float()  # uint8 to fp16/32
     img /= 255 
     if len(img.shape) == 3:
@@ -61,7 +62,7 @@ def head_detect(_tracker,f_num,df,img0,_model,_device,
     pred = non_max_suppression(pred, conf_thres, iou_thres, None, False, max_det=max_det)
     for j, det in enumerate(pred): 
         det[:, :4] = scale_coords(img.shape[2:], det[:, :4], img0.shape).round()
-        cpu=det.cpu().numpy()
+        cpu=det.numpy()
         tracks=_tracker.update(cpu,img0)
     xyxys = tracks[:, 0:4].astype('int') # float64 to int
     normals=xyxys / shape_mat

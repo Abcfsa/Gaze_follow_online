@@ -63,7 +63,7 @@ def head_detect(_tracker,f_num,df,img0,_model,_device,
     for j, det in enumerate(pred): 
         det[:, :4] = scale_coords(img.shape[2:], det[:, :4], img0.shape).round()
         cpu=det.numpy()
-        tracks=_tracker.update(cpu,img0)
+        tracks=_tracker.update(cpu.float(),img0)
     xyxys = tracks[:, 0:4].astype('int') # float64 to int
     normals=xyxys / shape_mat
     # print(normal)

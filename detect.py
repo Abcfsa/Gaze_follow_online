@@ -27,7 +27,7 @@ def get_args_parser():
 
 def load_model(model_weights: str,
                imgsz=(640,640),  # inference size (pixels)
-               device='cuda:0',
+               device='cpu',
                ):
     # Load model
     device = select_device(device)

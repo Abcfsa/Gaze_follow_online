@@ -130,7 +130,7 @@ else:
         sl.divider()
         tracker = DeepOCSORT(
         model_weights=Path('osnet_x0_25_msmt17.pt'), # which ReID model to use
-        device='cuda:0',
+        device='cpu',
         fp16=True,
         )   
         head_model = 'head_detector_best.pt'

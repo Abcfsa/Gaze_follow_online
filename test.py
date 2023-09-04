@@ -10,7 +10,6 @@ import numpy as np
 import pandas as pd
 import torch
 import sys
-from memory_profiler import profile
 # import tracemalloc,json,gc
 import time
 from utils.general import (LOGGER, check_file, check_img_size, check_imshow, check_requirements, colorstr,
